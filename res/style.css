@@ -1,6 +1,6 @@
 .bot-display {
-	width: 85%;
-	height: 300px;
+	zoom: 20%;
+	height: 1500px;
 	overflow-y: scroll;
 	border: solid 2px #666;
 	padding: 5px;
@@ -23,4 +23,9 @@
 textarea#code {
 	width: 620px;
 	height: 120px;
+}
+
+textarea#payload {
+	width: 450px;
+	height: 50px;
 }

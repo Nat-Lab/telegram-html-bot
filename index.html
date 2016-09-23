@@ -13,8 +13,7 @@
 <link rel="stylesheet" media="all" href="res/display.css">
 </head>
 <body>
-<div class="bot-display" id="bot-display">
-</div>
+<div class="bot-display" id="bot-display"></div>
 <div class="bot-panel" id="bot-panel">
 <label>token: <input type="text" id="token" name="token"></label><br />
 <label>chat_id: <input type="text" id="cid" name="cid"></label> <button onclick="fillChatID()">&lt;-</button> <select name="chatlist" id="chatlist"></select> <br /> 
@@ -56,7 +55,42 @@ if(message["text"] == "hi") {
 }
 */
 </textarea><br />
-<button onclick="updateUserCode();">Update Code</button>
+<button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button>
+</div>
+<div class="bot-advance">
+<b>Custom API action:</b><br />
+<label for="apimethod">Method: </label>
+<select name="apimethod" id="apimethod">
+<option>answerCallbackQuery</option>
+<option>editMessageCaption</option>
+<option>editMessageReplyMarkup</option>
+<option>editMessageText</option>
+<option>forwardMessage</option>
+<option>getChat</option>
+<option>getChatAdministrators</option>
+<option>getChatMember</option>
+<option>getChatMembersCount</option>
+<option>getFile</option>
+<option>getMe</option>
+<option>getUserProfilePhotos</option>
+<option>kickChatMember</option>
+<option>leaveChat</option>
+<option>sendAudio</option>
+<option>sendChatAction</option>
+<option>sendContact</option>
+<option>sendDocument</option>
+<option>sendLocation</option>
+<option>sendMessage</option>
+<option>sendPhoto</option>
+<option>sendSticker</option>
+<option>sendVenue</option>
+<option>sendVideo</option>
+<option>sendVoice</option>
+<option>unbanChatMember</option>
+</select><br />
+<label for="payload">Payload: </label><br />
+<textarea name="payload" id="payload" placeholder="chat_id=....&text=...."></textarea><br />
+<button onclick="sendCustomApi();" id="sendCustomApiButton">Act</button>
 </div>
 </body>
 </html>

@@ -22,6 +22,8 @@ function loadSession () {
 	updateChatList(chatList);
 }
 
+// Start userCode methods
+
 function setTarget (target) {
 	document.getElementById("cid").value = target;
 }
@@ -29,6 +31,28 @@ function setTarget (target) {
 function setContent (content) {
 	document.getElementById("text").value = content;
 }
+
+function setParseMode (mode) {
+	document.getElementById("prase").value = mode;
+}
+
+function setUrlPreview (pv) {
+	document.getElementById("nopreview").value = pv;
+}
+
+function setNotification (notify) {
+	document.getElementById("nopush").value = !notify;
+}
+
+function setApi (apiname) {
+	document.getElementById("apimethod").value = apiname;
+}
+
+function setPayload (parm) {
+	document.getElementById("payload").value = parm;
+}
+
+// End userCode methods
 
 function fillChatID () {
 	document.getElementById("cid").value = document.getElementById("chatlist").value;

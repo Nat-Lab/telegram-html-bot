@@ -33,6 +33,15 @@ function botApi (action, param, callback) {
 	http.onreadystatechange = callback;
 }
 
+function sendCustomApi () {
+	getVar();
+	payload   = document.getElementById("payload").value;
+	apimethod = document.getElementById("apimethod").value;
+	botApi (apimethod, payload, function() {
+		appendLog(JSON.parse(http.responseText));
+	})
+}
+
 function sendMessage() {
 	getVar();
 	if(prase == "none") prase = "";
