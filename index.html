@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>telegram-html-bot</title>
+<!--<script src="res/codemirror.js"></script>
+<script src="res/javascript.js"></script>-->
+<script src="res/json.human.js"></script>
+<script src="res/bot.js"></script>
+<script src="res/display.js"></script>
+<script src="res/ui.js"></script>
+<script src="res/hacks.js"></script>
+<link rel="stylesheet" media="all" href="res/style.css">
+<link rel="stylesheet" media="all" href="res/display.css">
+</head>
+<body>
+<div class="bot-display" id="bot-display">
+</div>
+<div class="bot-panel" id="bot-panel">
+<label>token: <input type="text" id="token" name="token"></label><br />
+<label>chat_id: <input type="text" id="cid" name="cid"></label> <button onclick="fillChatID()">&lt;-</button> <select name="chatlist" id="chatlist"></select> <br /> 
+<label>parse_mode: <select name="prase" id="prase">
+<option>none</option>
+<option>Markdown</option>
+<option>HTML</option>
+</select></label><br />
+<label>disable_web_page_preview: <select name="nopreview" id="nopreview">
+<option>false</option>
+<option>true</option>
+</select></label><br />
+<label>disable_notification: <select name="nopush" id="nopush">
+<option>false</option>
+<option>true</option>
+</select></label><br />
+<label for="text">Message: </label><br />
+<textarea name="text" id="text"></textarea><br />
+<button onclick="sendMessage();">Send</button>
+<button onclick="startPolling();">Start Polling</button>
+<button onclick="saveSession();">Save Session</button>
+<button onclick="loadSession();">Load Session</button>
+</div>
+<div class="bot-code" id="bot-code">
+<label for="code">Write you own code: </label><br />
+<textarea name="code" id="code">
+// The "message" object received from telegram will be pass to your code.
+// Some possible methods are:
+//     setTarget(chat_id) 
+//     setContent(message)
+//     sendMessage() 
+// Here's an example: 
+/*
+if(message["text"] == "hi") {
+	setTarget(message["chat"]["id"]);
+	setContent("Hi!");
+	sendMessage();
+}
+*/
+</textarea><br />
+<button onclick="updateUserCode();">Update Code</button>
+</div>
+</body>
+</html>

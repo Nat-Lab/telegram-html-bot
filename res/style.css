@@ -1,0 +1,26 @@
+.bot-display {
+	width: 85%;
+	height: 300px;
+	overflow-y: scroll;
+	border: solid 2px #666;
+	padding: 5px;
+}
+
+.bot-panel {
+	display: inline-block;
+	width: 35%;
+	padding-top: 5px;
+}
+
+.bot-code {
+	border-left: solid 2px #666;
+	padding: 5px;
+	display: inline-block;
+	width: 50%;
+	padding-top: 5px;
+}
+
+textarea#code {
+	width: 620px;
+	height: 120px;
+}
