@@ -8,6 +8,7 @@ function saveSession () {
 	localStorage["body"] = body;
 	localStorage["chatList"] = JSON.stringify(chatList);
 	localStorage["usercode"] = userCodeMirror.getValue();
+	biu('Session saved.', {type: 'success'})
 }
 
 function loadSession () {
@@ -20,6 +21,7 @@ function loadSession () {
 	userCodeMirror.setValue(localStorage["usercode"]);
 	chatList = JSON.parse(localStorage["chatList"]);
 	updateChatList(chatList);
+	biu('Session loaded.', {type: 'success'})
 }
 
 // Start userCode methods
@@ -71,4 +73,5 @@ function updateChatList (chatList) {
 
 function updateUserCode () {
 	userCode = new Function("message", userCodeMirror.getValue());
+	biu('Code updated.', {type: 'success'})
 }
