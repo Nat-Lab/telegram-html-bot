@@ -54,14 +54,13 @@ function setPayload (parm) {
 
 // End userCode methods
 
-function fillChatID () {
-	document.getElementById("cid").value = document.getElementById("chatlist").value;
+function OepnApiDoc () {
+	section = document.getElementById("apimethod").value.toLowerCase();
+	window.open("https://core.telegram.org/bots/api#" + section);
 }
 
-function removeOptions(selectbox){
-	for(i = selectbox.options.length - 1 ; i >= 0 ; i--) {
-        	selectbox.remove(i);
-	}
+function fillChatID () {
+	document.getElementById("cid").value = document.getElementById("chatlist").value;
 }
 
 function updateChatList (chatList) {
