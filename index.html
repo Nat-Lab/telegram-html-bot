@@ -2,17 +2,18 @@
 <html>
 <head>
 <title>telegram-html-bot</title>
-<!--<script src="res/codemirror.js"></script>
-<script src="res/javascript.js"></script>-->
+<link rel="stylesheet" media="all" href="res/style.css">
+<link rel="stylesheet" media="all" href="res/display.css">
+<link rel="stylesheet" media="all" href="res/biu.css">
+<link rel="stylesheet" media="all" href="res/codemirror.css">
+<script src="res/codemirror.js"></script>
+<script src="res/javascript.js"></script>
 <script src="res/biu.min.js"></script>
 <script src="res/json.human.js"></script>
 <script src="res/bot.js"></script>
 <script src="res/display.js"></script>
 <script src="res/ui.js"></script>
 <script src="res/hacks.js"></script>
-<link rel="stylesheet" media="all" href="res/style.css">
-<link rel="stylesheet" media="all" href="res/display.css">
-<link rel="stylesheet" media="all" href="res/biu.css">
 </head>
 <body>
 <div class="bot-display" id="bot-display"></div>
@@ -44,20 +45,12 @@
 <label for="code">Write you own code: </label><br />
 <textarea name="code" id="code">
 // The "message" object received from telegram will be pass to your code.
-// Some possible methods are:
-//     setTarget(chat_id) 
-//     setContent(message)
-//     sendMessage() 
-// Here's an example: 
-/*
+// See README.md for more informations.
 if(message["text"] == "hi") {
 	setTarget(message["chat"]["id"]);
 	setContent("Hi!");
 	sendMessage();
-}
-*/
-</textarea><br />
-<button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button>
+}</textarea><button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button>
 </div>
 <div class="bot-ui bot-advance">
 <b>Custom API action:</b><br />
@@ -108,4 +101,5 @@ if(message["text"] == "hi") {
 </select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
 </div>
 </body>
+<script src="res/code_ui_init.js"></script>
 </html>

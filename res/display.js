@@ -27,5 +27,3 @@ function clearLog() {
 	display = document.getElementById("bot-display");
 	display.innerHTML="";
 }
-
-//var userCodeMirror = CodeMirror.fromTextArea(document.getElementById("code"), { mode:  "javascript" });

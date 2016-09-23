@@ -7,7 +7,7 @@ function saveSession () {
 	localStorage["nopu"] = nopu;
 	localStorage["body"] = body;
 	localStorage["chatList"] = JSON.stringify(chatList);
-	localStorage["usercode"] = document.getElementById("code").value;
+	localStorage["usercode"] = userCodeMirror.getValue();
 }
 
 function loadSession () {
@@ -17,7 +17,7 @@ function loadSession () {
 	document.getElementById("nopreview").value = localStorage["nopv"];
 	document.getElementById("nopush").value = localStorage["nopu"];
 	document.getElementById("text").value = localStorage["body"];
-	document.getElementById("code").value = localStorage["usercode"];
+	userCodeMirror.setValue(localStorage["usercode"]);
 	chatList = JSON.parse(localStorage["chatList"]);
 	updateChatList(chatList);
 }
@@ -70,5 +70,5 @@ function updateChatList (chatList) {
 }
 
 function updateUserCode () {
-	userCode = new Function("message", document.getElementById("code").value);
+	userCode = new Function("message", userCodeMirror.getValue());
 }

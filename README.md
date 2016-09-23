@@ -47,3 +47,4 @@ If this bot receive a 'hi', then it will reply 'Hi!'. If a '/whoami' is received
 telegram-html-bot uses code from these open source projects:
 - [marianoguerra/json.human.js](https://github.com/marianoguerra/json.human.js) to format the `JSON` display. (MIT license)
 - [egoist/biu](https://github.com/egoist/biu) to send error notification. (MIT license)
+- [codemirror/CodeMirror](https://github.com/codemirror/CodeMirror) for syntax highlighting. (MIT license)
