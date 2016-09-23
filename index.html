@@ -33,10 +33,11 @@
 </select></label><br />
 <label for="text">Message: </label><br />
 <textarea name="text" id="text"></textarea><br />
-<button onclick="sendMessage();">Send</button>
-<button onclick="startPolling();">Start Polling</button>
-<button onclick="saveSession();">Save Session</button>
-<button onclick="loadSession();">Load Session</button>
+<button id="sendMessageButton" onclick="sendMessage();">Send</button>
+<button id="startPollingButton" onclick="startPolling();">Start Polling</button>
+<button id="saveSessionButton" onclick="saveSession();">Save Session</button>
+<button id="loadSessionButton" onclick="loadSession();">Load Session</button>
+<button id="clearLogButton" onclick="clearLog();">Clear log</button>
 </div>
 <div class="bot-code" id="bot-code">
 <label for="code">Write you own code: </label><br />

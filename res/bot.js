@@ -51,6 +51,7 @@ function sendMessage() {
 }
 
 function startPolling () {
+	document.getElementById("startPollingButton").disabled = true;
 	window.setInterval(polling, 1000);
 }
 
