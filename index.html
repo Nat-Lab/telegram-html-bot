@@ -18,6 +18,7 @@
 <body>
 <div class="bot-display" id="bot-display"></div>
 <div class="bot-ui bot-panel" id="bot-panel">
+<b>Bot configuration:</b><br />
 <label>token: <input type="text" id="token" name="token"></label><br />
 <label>chat_id: <input type="text" id="cid" name="cid"></label> <button onclick="fillChatID()">&lt;-</button> <select name="chatlist" id="chatlist"></select> <br /> 
 <label>parse_mode: <select name="prase" id="prase">
@@ -42,13 +43,15 @@
 <button id="clearLogButton" onclick="clearLog();">Clear log</button>
 </div>
 <div class="bot-ui bot-code" id="bot-code">
-<label for="code">Write you own code: </label><br />
+<b>Bot code: </b><br />
 <textarea name="code" id="code">
 // The "message" object received from telegram will be pass to your code.
 // See README.md for more informations.
-if(message["text"] == "hi") {
+if(message["text"] == "/start") {
 	setTarget(message["chat"]["id"]);
-	setContent("Hi!");
+	msg_str = (message["chat"]["type"] == "private") ? " " 
+		+ message["chat"]["first_name"] : "";
+	setContent("Hi" + msg_str +"! I am a bot running in browser!");
 	sendMessage();
 }</textarea><button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button>
 </div>

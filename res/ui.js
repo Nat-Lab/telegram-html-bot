@@ -8,6 +8,7 @@ function saveSession () {
 	localStorage["body"] = body;
 	localStorage["chatList"] = JSON.stringify(chatList);
 	localStorage["usercode"] = userCodeMirror.getValue();
+	localStorage["logdisplay"] = document.getElementById("bot-display").innerHTML;
 	biu('Session saved.', {type: 'success'})
 }
 
@@ -20,7 +21,11 @@ function loadSession () {
 	document.getElementById("text").value = localStorage["body"];
 	userCodeMirror.setValue(localStorage["usercode"]);
 	chatList = JSON.parse(localStorage["chatList"]);
+	display = document.getElementById("bot-display");
+	display.innerHTML = localStorage["logdisplay"];
+	display.scrollTop = display.scrollHeight;
 	updateChatList(chatList);
+	
 	biu('Session loaded.', {type: 'success'})
 }
 

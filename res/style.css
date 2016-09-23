@@ -42,3 +42,15 @@ textarea#payload {
 	width: 95%;
 	height: 50px;
 }
+
+.jh-object-key {
+	width: 100px;
+}
+
+.jh-root tr {
+	border-bottom: solid 1px #ccc;
+}
+
+.jh-root {
+	border: 10px solid #666 !important;
+}
