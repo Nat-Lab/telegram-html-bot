@@ -1,10 +1,12 @@
 .bot-display {
 	height: 300px;
 	overflow-y: scroll;
-	border: solid 2px #666;
-	padding: 5px;
-	margin-bottom: 10px;
+	
 	resize: vertical;
+}
+
+.bot-display-container {
+	width: 87%;
 }
 
 .bot-panel {
@@ -51,6 +53,7 @@ textarea#payload {
 }
 
 .jh-root {
-	border: 3px solid #666 !important;
+	border: 1px solid #666 !important;
+	width: 95% !important;
 	font-size: 12px;
 }
