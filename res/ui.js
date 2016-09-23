@@ -54,7 +54,7 @@ function setPayload (parm) {
 
 // End userCode methods
 
-function OepnApiDoc () {
+function openApiDoc () {
 	section = document.getElementById("apimethod").value.toLowerCase();
 	window.open("https://core.telegram.org/bots/api#" + section);
 }

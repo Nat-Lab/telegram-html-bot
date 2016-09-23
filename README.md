@@ -44,4 +44,6 @@ Here's an example:
     
 If this bot receive a 'hi', then it will reply 'Hi!'. If a '/whoami' is received, then reply user's first name. If a F word is received from a group, quit it.
 
-telegram-html-bot uses code from [marianoguerra/json.human.js](https://github.com/marianoguerra/json.human.js) to format the `JSON` display. `json.human.js` is a open source project license under MIT license. 
+telegram-html-bot uses code from these open source projects:
+- [marianoguerra/json.human.js](https://github.com/marianoguerra/json.human.js) to format the `JSON` display. (MIT license)
+- [egoist/biu](https://github.com/egoist/biu) to send error notification. (MIT license)

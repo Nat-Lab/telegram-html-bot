@@ -20,3 +20,8 @@ Array.prototype.pushArrayIfNotExist = function(element) {
 		this.push(element);
 	}
 };
+
+window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+	biu("Error: " + errorMsg, {type: "danger"})
+	return false;
+}

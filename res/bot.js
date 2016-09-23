@@ -34,6 +34,49 @@ function botApi (http, action, param, callback) {
 	http.onreadystatechange = callback;
 }
 
+function sendFdToApi (http, action, fd, callback) {
+	para_name = action.substring(4).toLowerCase();
+	url = "https://api.telegram.org/bot" + token + "/" + action;
+	http.open("POST", url, true);
+	http.send(fd);
+	http.onreadystatechange = callback;
+}
+
+function downloadFile() {
+	getVar();
+	fileid = document.getElementById("fileid").value;
+	botApi(httpSender, "getFile", "file_id=" + fileid, function () {
+		if(httpSender.readyState == 4 && httpSender.status == 200) {
+			res = JSON.parse(httpSender.responseText);
+			if(res["ok"]) {
+				appendLog(res["result"]);
+				filepath = res["result"]["file_path"];
+				var urldisp = document.getElementById("linkdisp");
+				urldisp.href = "https://api.telegram.org/file/bot" + token + "/" + filepath;
+				urldisp.innerHTML = filepath;
+			}
+		}
+	});
+}
+
+function sendFile () {
+	getVar();
+	sendtype = document.getElementById("sendtype").value;
+	action = sendtype.substring(4).toLowerCase();
+	var fd = new FormData();
+	fd.append(action, document.getElementById("tosend").files[0]);
+	fd.append("chat_id", document.getElementById("fileto").value);
+	sendFdToApi(httpSender, sendtype, fd, function() {
+		if(httpSender.readyState == 4 && httpSender.status == 200) {
+			res = JSON.parse(httpSender.responseText);
+			if(res["ok"]) {
+				appendLog(res["result"]);
+				addChatList(res["result"]["chat"]);
+			}
+		}
+	});
+}
+
 function sendCustomApi () {
 	getVar();
 	payload   = document.getElementById("payload").value;

@@ -4,20 +4,33 @@
 	overflow-y: scroll;
 	border: solid 2px #666;
 	padding: 5px;
+	margin-bottom: 10px;
+	resize: vertical;
 }
 
 .bot-panel {
-	display: inline-block;
 	width: 35%;
-	padding-top: 5px;
 }
 
 .bot-code {
+	width: 50%;
+}
+
+.bot-advance {
+	width: 35%;
+}
+
+.bot-file {
+	width: 50%;
+}
+
+.bot-ui {
+	vertical-align: top;
 	border-left: solid 2px #666;
+	border-top: solid 2px #666;
+	margin-top: 2px;
 	padding: 5px;
 	display: inline-block;
-	width: 50%;
-	padding-top: 5px;
 }
 
 textarea#code {
@@ -26,6 +39,6 @@ textarea#code {
 }
 
 textarea#payload {
-	width: 450px;
+	width: 95%;
 	height: 50px;
 }

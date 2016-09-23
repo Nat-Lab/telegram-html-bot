@@ -25,7 +25,7 @@ function appendLog (json) {
 
 function clearLog() {
 	display = document.getElementById("bot-display");
-	display.innerHtml="";
+	display.innerHTML="";
 }
 
 //var userCodeMirror = CodeMirror.fromTextArea(document.getElementById("code"), { mode:  "javascript" });
