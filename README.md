@@ -1,10 +1,15 @@
 ### telegram-html-bot
+---
+
+### Introduction
 
 telegram-html-bot is a [Telegram bot](https://core.telegram.org/bots/) that runs in web browsers. Simply apply a bot TOKEN from [@botfather](https://telegram.me/botfather), fill it in the `TOKEN` box, and click on "Start Polling", then you are all set! Try sending something to bot. 
 
 When a message is received, the `JSON` structure of message will be show on the box above. You can play it with your own code. To do this, write your code in the "Write you own code" block, the code should be written in Javascript. After you finish writing your code, click on "Update Code" to make it active.
 
 A session can be save by clicking "Save Session" button, by clicking it, your code, `token`, `chat_id`, and other options will be save. You can load the session later by clicking "Load Session" button. Remember to click on "Update Code" after you load your session. They won't be load atomically.
+
+### Coding
 
 A `Message` object named message will be pass to your code, you can see it's structure on the box above, or [Telegram bot API document](https://core.telegram.org/bots/api).
 
@@ -22,27 +27,44 @@ If you wants to use other APIs, you can do it by:
 - `setApi(String apiName)`: Set a API method to use.
 - `setPayload(String param)`: Set `POST` parameters.
 
-Here's an example:
+Here's an example of bot code:
 
-    send = true;
-    switch(message["text"]) {
-	    case "hi": setContent("Hi!"); break;
-	    case "/whoami": setContent("You are " + message["chat"]["first_name"]); break;
-	    case "fuck": 
-	        if(message["chat"]["type"] == "group") {
-	            setApi("leaveChat");
-	            setPayload("chat_id="+message["chat"]["id"]);
-	            sendCustomApi();
-	        }
-	        break;
-	    default: send = false;
-    }
-    if (send) {
-	    setTarget(message["chat"]["id"]);
-	    sendMessage();
-    }
-    
-If this bot receive a 'hi', then it will reply 'Hi!'. If a '/whoami' is received, then reply user's first name. If a F word is received from a group, quit it.
+```javascript
+send = true;
+switch(message["text"]) {
+    case "/start": 
+		setContent("Hi! I am a bot running in browser!"); 
+        break;
+    case "/whoami": 
+        msg_str = (message["chat"]["type"] == "private") ?
+	    	message["chat"]["first_name"] : "in a group!";
+        setContent("You are " + msg_str); 
+        break;
+    case "fuck": 
+        if(message["chat"]["type"] != "private") {
+            setApi("leaveChat");
+            setPayload("chat_id="+message["chat"]["id"]);
+            sendCustomApi();
+            send = false;
+        } else setContent("That's bad.");
+        break;
+    default: send = false;
+}
+if (send) {
+    setTarget(message["chat"]["id"]);
+    sendMessage();
+}
+```
+
+When bot gets `/start`, it replies with "Hi!". When bot gets `/whoami`, bot replies user's first name if the message are received from private chat, otherwise replies "You are in a group!". When a f-word is received from group, bot will leave that group, or replies "That's bad." if it comes from private chat.
+
+### Screenshot
+
+![A running html bot](https://raw.githubusercontent.com/Nat-Lab/telegram-html-bot/doc/img/htmlbot.png)
+
+:( Low CSS skill, low Javascript skill. 
+
+### Acknowledgement
 
 telegram-html-bot uses code from these open source projects:
 - [marianoguerra/json.human.js](https://github.com/marianoguerra/json.human.js) to format the `JSON` display. (MIT license)
