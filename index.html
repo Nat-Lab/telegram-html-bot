@@ -34,7 +34,7 @@ Payload: <br />
 </div>
 </div>
 </div>
-<div class="bot-panels-container">
+<div class="bot-panels-container-left">
 <div class="bot-ui bot-panel" id="bot-panel">
 <b>Bot configuration:</b><br />
 <label>token: <input type="text" id="token" name="token" autocorrect="off" ></label><br />
@@ -57,19 +57,6 @@ Payload: <br />
 <button id="sendMessageButton" onclick="sendMessage();">Send</button>
 <button id="startPollingButton" onclick="startPolling();">Start Polling</button>
 <button id="clearLogButton" onclick="clearLog();">Clear log</button>
-</div>
-<div class="bot-ui bot-code" id="bot-code">
-<b>Bot code: </b><br />
-<textarea name="code" id="code">
-// The "message" object received from telegram will be pass to your code.
-// See README.md for more informations.
-if(message["text"] == "/start") {
-	setTarget(message["chat"]["id"]);
-	msg_str = (message["chat"]["type"] == "private") ? " " 
-		+ message["chat"]["first_name"] : "";
-	setContent("Hi" + msg_str +"! I am a bot running in browser!");
-	sendMessage();
-}</textarea><button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button> (or Ctrl-S/Command-S)
 </div>
 <div class="bot-ui bot-advance">
 <b>Custom API action:</b><br />
@@ -109,18 +96,6 @@ if(message["text"] == "/start") {
 <textarea name="payload" id="payload" placeholder="chat_id=....&text=...." autocorrect="off"></textarea><br />
 <button onclick="sendCustomApi();" id="sendCustomApiButton">Act</button>
 </div>
-<div class="bot-ui bot-file">
-<b>Send/Get file:</b><br />
-<label>File ID: <input type="text" name="fileid" id="fileid" autocorrect="off"></input></label> 
-<button onclick="downloadFile();" id="downloadFileButton">Download</button> <a id="linkdisp" href="" target="_blank"></a>
-<br>Send File: <select name="sendtype" id="sendtype">
-<option>sendPhoto</option>
-<option>sendSticker</option>
-<option>sendVideo</option>
-<option>sendVoice</option>
-<option>sendDocument</option>
-</select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id" autocorrect="off"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
-</div>
 <div class="bot-ui bot-session">
 <b>Bot session:</b><br />
 <label>Save/Load session: <input type="text" name="sessionname" id="sessionname" placeholder="name, empty for default." autocorrect="off"></input></label> 
@@ -134,6 +109,33 @@ if(message["text"] == "/start") {
 <textarea name="plainei" id="plainei"></textarea><br /> 
 <button id="exportSessionPlainButton" onclick="exportSessionPlain();">Export</button>
 <button id="loadSessionPlainButton" onclick="loadSessionPlain();">Import</button>
+</div>
+</div>
+<div class="bot-panels-container-right">
+<div class="bot-ui bot-code" id="bot-code">
+<b>Bot code: </b><br />
+<textarea name="code" id="code">
+// The "message" object received from telegram will be pass to your code.
+// See README.md for more informations.
+if(message["text"] == "/start") {
+	setTarget(message["chat"]["id"]);
+	msg_str = (message["chat"]["type"] == "private") ? " " 
+		+ message["chat"]["first_name"] : "";
+	setContent("Hi" + msg_str +"! I am a bot running in browser!");
+	sendMessage();
+}</textarea><button onclick="updateUserCode();" id="updateUserCodeButton" >Update Code</button> (or Ctrl-S/Command-S)
+</div>
+<div class="bot-ui bot-file">
+<b>Send/Get file:</b><br />
+<label>File ID: <input type="text" name="fileid" id="fileid" autocorrect="off"></input></label> 
+<button onclick="downloadFile();" id="downloadFileButton">Download</button> <a id="linkdisp" href="" target="_blank"></a>
+<br>Send File: <select name="sendtype" id="sendtype">
+<option>sendPhoto</option>
+<option>sendSticker</option>
+<option>sendVideo</option>
+<option>sendVoice</option>
+<option>sendDocument</option>
+</select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id" autocorrect="off"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
 </div>
 <div class="bot-ui bot-code" id="bot-code">
 <b>Run code: </b><br />
