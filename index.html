@@ -16,10 +16,25 @@
 <script src="res/hacks.js"></script>
 </head>
 <body>
+<div id="bot-log-container">
 <div class="bot-ui bot-display-container">
 <b>API Log:</b><br />
 <div class="bot-display" id="bot-display"></div>
 </div>
+<div class="bot-last-log-container">
+<div class="bot-ui bot-debug-lastpara">
+<b>Last request:</b><br />
+URL: <input type="text" name="lrurl" id="lrurl" autocorrect="off"></input><br />
+Payload: <br />
+<textarea name="lrpayload" id="lrpayload" autocorrect="off"></textarea><br />
+</div>
+<div class="bot-ui bot-debug-lastjson">
+<b>Last respond:</b><br />
+<textarea name="lastjson" id="lastjson"></textarea>
+</div>
+</div>
+</div>
+<div class="bot-panels-container">
 <div class="bot-ui bot-panel" id="bot-panel">
 <b>Bot configuration:</b><br />
 <label>token: <input type="text" id="token" name="token" autocorrect="off" ></label><br />
@@ -106,16 +121,6 @@ if(message["text"] == "/start") {
 <option>sendDocument</option>
 </select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id" autocorrect="off"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
 </div>
-<div class="bot-ui bot-debug-lastpara">
-<b>Last request:</b><br />
-URL: <input type="text" name="lrurl" id="lrurl" autocorrect="off"></input><br />
-Payload: <br />
-<textarea name="lrpayload" id="lrpayload" autocorrect="off"></textarea><br />
-</div>
-<div class="bot-ui bot-debug-lastjson">
-<b>Last respond:</b><br />
-<textarea name="lastjson" id="lastjson"></textarea>
-</div>
 <div class="bot-ui bot-session">
 <b>Bot session:</b><br />
 <label>Save/Load session: <input type="text" name="sessionname" id="sessionname" placeholder="name, empty for default." autocorrect="off"></input></label> 
@@ -134,6 +139,7 @@ Payload: <br />
 <b>Run code: </b><br />
 <textarea name="evalCode" id="evalCode">
 </textarea><button onclick="eval(evalCode.getValue());" id="evalButton" >eval</button>
+</div>
 </div>
 </body>
 <script src="res/code_ui_init.js"></script>
