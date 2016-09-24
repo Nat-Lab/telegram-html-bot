@@ -1,0 +1,1 @@
+{"token":"","cid":"","prase":"none","nopv":"false","nopu":"false","body":"","chatList":[],"usercode":"setTarget(message[\"chat\"][\"id\"]);\nsetContent(message[\"text\"]);\nsendMessage();","logdisplay":"","evalCode":"","resJson":"","lrurl":"","lrpayload":"","apimethod":"answerCallbackQuery","payload":"","fileid":"","sendtype":"sendPhoto","fileto":""}
