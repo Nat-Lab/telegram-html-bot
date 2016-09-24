@@ -1,13 +1,9 @@
 ### telegram-html-bot
 ---
 
-### Introduction
-
 telegram-html-bot is a [Telegram bot](https://core.telegram.org/bots/) that runs in web browsers. Simply apply a bot TOKEN from [@botfather](https://telegram.me/botfather), fill it in the `TOKEN` box, and click on "Start Polling", then you are all set! Try sending something to bot. 
 
 When a message is received, the `JSON` structure of message will be show on the box above. You can play it with your own code. To do this, write your code in the "Write you own code" block, the code should be written in Javascript. After you finish writing your code, click on "Update Code" to make it active.
-
-A session can be save by clicking "Save Session" button, by clicking it, your code, `token`, `chat_id`, and other options will be save. You can load the session later by clicking "Load Session" button. Remember to click on "Update Code" after you load your session. They won't be load atomically.
 
 ### Coding
 
@@ -57,6 +53,12 @@ if (send) {
 ```
 
 When bot gets `/start`, it replies with "Hi!". When bot gets `/whoami`, bot replies user's first name if the message are received from private chat, otherwise replies "You are in a group!". When a f-word is received from group, bot will leave that group, or replies "That's bad." if it comes from private chat.
+
+### Misc
+
+There are 9 panels on the page: A bot configuration panel for bot settings, sending message, etc., a code panel for writing bot code, a custom API panel for making custom requests to API, a send/get file panel for sending file and getting file from/to chat, Last request and last respond panel for viewing raw respond json and request parameters, bot session panel for saving a bot in browser’s local storage, as file, or as plain text, and a run code panel for executing code. 
+
+A name can be given when saving a session to browser’s local storage, so you can store multiple codes, or bots in browser. 
 
 ### Screenshot
 
