@@ -130,6 +130,11 @@ Payload: <br />
 <button id="exportSessionPlainButton" onclick="exportSessionPlain();">Export</button>
 <button id="loadSessionPlainButton" onclick="loadSessionPlain();">Import</button>
 </div>
+<div class="bot-ui bot-code" id="bot-code">
+<b>Run code: </b><br />
+<textarea name="evalCode" id="evalCode">
+</textarea><button onclick="eval(evalCode.getValue());" id="evalButton" >eval</button>
+</div>
 </body>
 <script src="res/code_ui_init.js"></script>
 </html>

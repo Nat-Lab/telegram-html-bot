@@ -31,7 +31,7 @@ textarea#code {
 	height: 120px;
 }
 
-textarea#payload, textarea#lrpayload, textarea#text, textarea#plainei {
+textarea#payload, textarea#lrpayload, textarea#text, textarea#plainei, textarea#evalCode {
 	width: 95%;
 	height: 50px;
 }
