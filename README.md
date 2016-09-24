@@ -63,6 +63,7 @@ A name can be given when saving a session to browser’s local storage, so you c
 ### Screenshot
 
 ![A running html bot](https://raw.githubusercontent.com/Nat-Lab/telegram-html-bot/doc/img/htmlbot.png)
+![A running html bot on small device](https://raw.githubusercontent.com/Nat-Lab/telegram-html-bot/doc/img/htmlbot-mobile.png)
 
 :( Low CSS skill, low Javascript skill. 
 
