@@ -22,23 +22,45 @@ function getSaveData () {
 	saveData["chatList"] = chatList;
 	saveData["usercode"] = userCodeMirror.getValue();
 	saveData["logdisplay"] = document.getElementById("bot-display").innerHTML;
+	saveData["evalCode"] = evalCode.getValue();
+	saveData["resJson"] = respondJsonCodeMirror.getValue();
+	saveData["lrurl"] = document.getElementById("lrurl").value;
+	saveData["lrpayload"] = document.getElementById("lrpayload").value;
+	saveData["apimethod"] = document.getElementById("apimethod").value;
+	saveData["payload"] = document.getElementById("payload").value;
+	saveData["fileid"] = document.getElementById("fileid").value;
+	saveData["sendtype"] = document.getElementById("sendtype").value;
+	saveData["fileto"] =  document.getElementById("fileto").value;
 	return JSON.stringify(saveData);
 }
 
 function loadSaveData (saveData) {
-	saveData = JSON.parse(saveData);
-	document.getElementById("token").value = saveData["token"];
-	document.getElementById("cid").value = saveData["cid"];
-	document.getElementById("prase").value = saveData["prase"];
-	document.getElementById("nopreview").value = saveData["nopv"];
-	document.getElementById("nopush").value = saveData["nopu"];
-	document.getElementById("text").value = saveData["body"];
-	userCodeMirror.setValue(saveData["usercode"]);
-	chatList = saveData["chatList"];
-	display = document.getElementById("bot-display");
-	display.innerHTML = saveData["logdisplay"];
-	display.scrollTop = display.scrollHeight;
-	updateChatList(chatList);
+	try {
+		saveData = JSON.parse(saveData);
+		document.getElementById("token").value = saveData["token"];
+		document.getElementById("cid").value = saveData["cid"];
+		document.getElementById("prase").value = saveData["prase"];
+		document.getElementById("nopreview").value = saveData["nopv"];
+		document.getElementById("nopush").value = saveData["nopu"];
+		document.getElementById("text").value = saveData["body"];
+		evalCode.setValue(saveData["evalCode"]);
+		respondJsonCodeMirror.setValue(saveData["resJson"]);
+		document.getElementById("lrurl").value = saveData["lrurl"];
+		document.getElementById("lrpayload").value = saveData["lrpayload"];
+		document.getElementById("apimethod").value = saveData["apimethod"];
+		document.getElementById("payload").value = saveData["payload"];
+		document.getElementById("fileid").value = saveData["fileid"];
+		document.getElementById("sendtype").value = saveData["sendtype"];
+		document.getElementById("fileto").value = saveData["fileto"];
+		userCodeMirror.setValue(saveData["usercode"]);
+		chatList = saveData["chatList"];
+		display = document.getElementById("bot-display");
+		display.innerHTML = saveData["logdisplay"];
+		display.scrollTop = display.scrollHeight;
+		updateChatList(chatList);
+	} catch (error) {
+		biu('Error during loading save data, corrupted/old save data?', {type: 'warning'})
+	}
 }
 
 function exportSession () {
@@ -111,5 +133,5 @@ function updateChatList (chatList) {
 
 function updateUserCode () {
 	userCode = new Function("message", userCodeMirror.getValue());
-	biu('Code updated.', {type: 'success'})
+	biu('Code updated.', {type: 'success'});
 }
