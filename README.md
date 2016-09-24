@@ -1,7 +1,7 @@
 ### telegram-html-bot
 ---
 
-telegram-html-bot is a [Telegram bot](https://core.telegram.org/bots/) that runs in web browsers. Simply apply a bot TOKEN from [@botfather](https://telegram.me/botfather), fill it in the `TOKEN` box, and click on "Start Polling", then you are all set! Try sending something to bot. 
+telegram-html-bot is a [Telegram bot](https://core.telegram.org/bots/) that runs in web browsers. Simply apply a bot TOKEN from [@botfather](https://telegram.me/botfather), fill it in the `TOKEN` box, and click on "Start Polling", then you are all set! Try send something to bot. 
 
 When a message is received, the `JSON` structure of message will be show on the box above. You can play it with your own code. To do this, write your code in the "Write you own code" block, the code should be written in Javascript. After you finish writing your code, click on "Update Code" to make it active.
 
