@@ -41,8 +41,6 @@
 <textarea name="text" id="text"></textarea><br />
 <button id="sendMessageButton" onclick="sendMessage();">Send</button>
 <button id="startPollingButton" onclick="startPolling();">Start Polling</button>
-<button id="saveSessionButton" onclick="saveSession();">Save Session</button>
-<button id="loadSessionButton" onclick="loadSession();">Load Session</button>
 <button id="clearLogButton" onclick="clearLog();">Clear log</button>
 </div>
 <div class="bot-ui bot-code" id="bot-code">
@@ -117,6 +115,16 @@ Payload: <br />
 <div class="bot-ui bot-debug-lastjson">
 <b>Last respond:</b><br />
 <textarea name="lastjson" id="lastjson"></textarea>
+</div>
+<div class="bot-ui bot-session">
+<b>Bot session:</b><br />
+<label>Save/Load session: <input type="text" name="sessionname" id="sessionname" placeholder="name, empty for default." autocorrect="off"></input></label> 
+<button id="saveSessionButton" onclick="saveSession();">Save</button>
+<button id="loadSessionButton" onclick="loadSession();">Load</button>
+<br />
+<label>Export session file: <button id="exportSessionButton" onclick="exportSession();">Export</button></label><br />
+<label>Import session file: <input type="file" name="sessionfile" id="sessionfile"></input></label> 
+<button onclick="importSession();" id="importSessionButton">Import</button>
 </div>
 </body>
 <script src="res/code_ui_init.js"></script>

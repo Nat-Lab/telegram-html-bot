@@ -1,32 +1,57 @@
 function saveSession () {
-	getVar();
-	localStorage["token"] = token;
-	localStorage["cid"] = cid;
-	localStorage["prase"] = prase;
-	localStorage["nopv"] = nopv;
-	localStorage["nopu"] = nopu;
-	localStorage["body"] = body;
-	localStorage["chatList"] = JSON.stringify(chatList);
-	localStorage["usercode"] = userCodeMirror.getValue();
-	localStorage["logdisplay"] = document.getElementById("bot-display").innerHTML;
+	session_name = document.getElementById("sessionname").value;
+	localStorage["htmlBotStorage"+session_name] = getSaveData();
 	biu('Session saved.', {type: 'success'})
 }
 
 function loadSession () {
-	document.getElementById("token").value = localStorage["token"];
-	document.getElementById("cid").value = localStorage["cid"];
-	document.getElementById("prase").value = localStorage["prase"];
-	document.getElementById("nopreview").value = localStorage["nopv"];
-	document.getElementById("nopush").value = localStorage["nopu"];
-	document.getElementById("text").value = localStorage["body"];
-	userCodeMirror.setValue(localStorage["usercode"]);
-	chatList = JSON.parse(localStorage["chatList"]);
+	session_name = document.getElementById("sessionname").value;
+	loadSaveData(localStorage["htmlBotStorage"+session_name]);
+	biu('Session loaded.', {type: 'success'})
+}
+
+function getSaveData () {
+	getVar();
+	saveData = {};
+	saveData["token"] = token;
+	saveData["cid"] = cid;
+	saveData["prase"] = prase;
+	saveData["nopv"] = nopv;
+	saveData["nopu"] = nopu;
+	saveData["body"] = body;
+	saveData["chatList"] = chatList;
+	saveData["usercode"] = userCodeMirror.getValue();
+	saveData["logdisplay"] = document.getElementById("bot-display").innerHTML;
+	return JSON.stringify(saveData);
+}
+
+function loadSaveData (saveData) {
+	saveData = JSON.parse(saveData);
+	document.getElementById("token").value = saveData["token"];
+	document.getElementById("cid").value = saveData["cid"];
+	document.getElementById("prase").value = saveData["prase"];
+	document.getElementById("nopreview").value = saveData["nopv"];
+	document.getElementById("nopush").value = saveData["nopu"];
+	document.getElementById("text").value = saveData["body"];
+	userCodeMirror.setValue(saveData["usercode"]);
+	chatList = saveData["chatList"];
 	display = document.getElementById("bot-display");
-	display.innerHTML = localStorage["logdisplay"];
+	display.innerHTML = saveData["logdisplay"];
 	display.scrollTop = display.scrollHeight;
 	updateChatList(chatList);
-	
-	biu('Session loaded.', {type: 'success'})
+}
+
+function exportSession () {
+	sessionUri = "data:application/octet-stream," + encodeURIComponent(getSaveData());
+	window.location.href = sessionUri;
+}
+
+function importSession () {
+	var reader = new FileReader();
+	reader.onload = function(fileData) {
+		loadSaveData(fileData.target.result);
+	}
+	reader.readAsText(document.getElementById("sessionfile").files[0]);
 }
 
 // Start userCode methods
