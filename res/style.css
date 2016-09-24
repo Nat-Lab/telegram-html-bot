@@ -1,7 +1,6 @@
 .bot-display {
 	height: 300px;
 	overflow-y: scroll;
-	
 	resize: vertical;
 }
 
@@ -19,11 +18,12 @@
 
 .bot-ui {
 	vertical-align: top;
-	border-left: solid 2px #666;
-	border-top: solid 2px #666;
+	border: solid 2px #666;
 	margin-top: 2px;
 	padding: 5px;
 	display: inline-block;
+	background-color: #f2f2f2;
+	box-shadow: 10px 5px 0px #ccc;
 }
 
 textarea#code {
@@ -49,7 +49,29 @@ input#lrurl {
 }
 
 .jh-root {
-	border: 1px solid #666 !important;
+	border: 3px solid #666 !important;
+	background-color: #fff !important;
 	width: 95% !important;
 	font-size: 12px;
+}
+
+body {
+	font-family: "Courier New", Courier, monospace;
+}
+
+textarea { 
+	font-family: inherit;
+	font-size: inherit;
+	border: solid 2px #666;
+}
+
+textarea, input {
+	outline: none;
+	 -webkit-appearance: none;
+	 -webkit-border-radius: 0;
+	 border-radius: 0;
+}
+
+select {
+	max-width: 200px;
 }

@@ -22,8 +22,8 @@
 </div>
 <div class="bot-ui bot-panel" id="bot-panel">
 <b>Bot configuration:</b><br />
-<label>token: <input type="text" id="token" name="token"></label><br />
-<label>chat_id: <input type="text" id="cid" name="cid"></label> <button onclick="fillChatID()">&lt;-</button> <select name="chatlist" id="chatlist"></select> <br /> 
+<label>token: <input type="text" id="token" name="token" autocorrect="off" ></label><br />
+<label>chat_id: <input type="text" id="cid" name="cid" autocorrect="off"></label> <button onclick="fillChatID()">&lt;-</button> <select name="chatlist" id="chatlist"></select> <br /> 
 <label>parse_mode: <select name="prase" id="prase">
 <option>none</option>
 <option>Markdown</option>
@@ -93,12 +93,12 @@ if(message["text"] == "/start") {
 </select> <button onclick="openApiDoc()" id="OepnApiDocButton">Open API Document</button>
 <br />
 <label for="payload">Payload: </label><br />
-<textarea name="payload" id="payload" placeholder="chat_id=....&text=...."></textarea><br />
+<textarea name="payload" id="payload" placeholder="chat_id=....&text=...." autocorrect="off"></textarea><br />
 <button onclick="sendCustomApi();" id="sendCustomApiButton">Act</button>
 </div>
 <div class="bot-ui bot-file">
 <b>Send/Get file:</b><br />
-<label>File ID: <input type="text" name="fileid" id="fileid"></input></label> 
+<label>File ID: <input type="text" name="fileid" id="fileid" autocorrect="off"></input></label> 
 <button onclick="downloadFile();" id="downloadFileButton">Download</button> <a id="linkdisp" href="" target="_blank"></a>
 <br>Send File: <select name="sendtype" id="sendtype">
 <option>sendPhoto</option>
@@ -106,17 +106,17 @@ if(message["text"] == "/start") {
 <option>sendVideo</option>
 <option>sendVoice</option>
 <option>sendDocument</option>
-</select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
+</select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id" autocorrect="off"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
 </div>
 <div class="bot-ui bot-debug-lastpara">
 <b>Last request:</b><br />
-URL: <input type="text" name="lrurl" id="lrurl"></input><br />
+URL: <input type="text" name="lrurl" id="lrurl" autocorrect="off"></input><br />
 Payload: <br />
-<textarea name="lrpayload" id="lrpayload"></textarea><br />
+<textarea name="lrpayload" id="lrpayload" autocorrect="off"></textarea><br />
 </div>
 <div class="bot-ui bot-debug-lastjson">
 <b>Last respond:</b><br />
-<textarea name="lastjson" id="lastjson"></textarea><br />
+<textarea name="lastjson" id="lastjson"></textarea>
 </div>
 </body>
 <script src="res/code_ui_init.js"></script>
