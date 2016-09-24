@@ -53,7 +53,7 @@ function downloadFile() {
 				var urldisp = document.getElementById("linkdisp");
 				urldisp.href = "https://api.telegram.org/file/bot" + token + "/" + filepath;
 				urldisp.innerHTML = filepath;
-			}
+			} else appendLog(res);
 		} else if (http.readyState == 4) httpError(http);
 	});
 }
@@ -72,7 +72,7 @@ function sendFile () {
 			if(res["ok"]) {
 				appendLog(res["result"]);
 				addChatList(res["result"]["chat"]);
-			}
+			} else appendLog(res);
 		} else if (http.readyState == 4) httpError(http);
 	});
 }
@@ -102,7 +102,7 @@ function sendMessage() {
 			if(res["ok"]) {
 				appendLog(res["result"]);
 				addChatList(res["result"]["chat"]);
-			}
+			} else appendLog(res);
 		} else if (http.readyState == 4) httpError(http);
 	});
 
@@ -132,12 +132,17 @@ function polling() {
 					}
 				});
 				offset++;
-			}
-		}
+			} else appendLog(pRes);
+		} else if (http.readyState == 4) httpError(http);
 	});
 
 }
 
 function httpError (http) {
-	biu("API retunred non-200 respond: " + http.status + " " + http.statusText, {type: "danger"});
+	try {
+		appendLog(JSON.parse(http.responseText));
+	} catch (error) {
+		console.warn("tried to parse a failed respond but: " + error +", ignoring.");
+		biu("API retunred non-200 respond: " + http.status + " " + http.statusText, {type: "danger"});
+	}
 }
