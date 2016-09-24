@@ -54,6 +54,14 @@ function importSession () {
 	reader.readAsText(document.getElementById("sessionfile").files[0]);
 }
 
+function exportSessionPlain() {
+	document.getElementById("plainei").value = getSaveData();
+}
+
+function loadSessionPlain() {
+	loadSaveData(document.getElementById("plainei").value);
+}
+
 // Start userCode methods
 
 function setTarget (target) {

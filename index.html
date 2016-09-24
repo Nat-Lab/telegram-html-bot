@@ -124,7 +124,11 @@ Payload: <br />
 <br />
 <label>Export session file: <button id="exportSessionButton" onclick="exportSession();">Export</button></label><br />
 <label>Import session file: <input type="file" name="sessionfile" id="sessionfile"></input></label> 
-<button onclick="importSession();" id="importSessionButton">Import</button>
+<button onclick="importSession();" id="importSessionButton">Import</button><br />
+<label for="plainei">Plain text import/export: </label><br />
+<textarea name="plainei" id="plainei"></textarea><br /> 
+<button id="exportSessionPlainButton" onclick="exportSessionPlain();">Export</button>
+<button id="loadSessionPlainButton" onclick="loadSessionPlain();">Import</button>
 </div>
 </body>
 <script src="res/code_ui_init.js"></script>
