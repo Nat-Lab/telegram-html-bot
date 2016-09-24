@@ -6,32 +6,6 @@
 }
 
 @media (min-width: 900px) {
-	/*.bot-display-container{
-		min-width: 500px !important;
-		max-width: 50% !important;
-		display: inline-block;
-	}
-
-	.bot-last-log-container {
-		min-width: 350px !important;
-		max-width: 35% !important;
-		display: inline-block;
-	}
-	.bot-debug-lastpara,
-	.bot-debug-lastjson {
-		width: 100%;
-	}*/
-	/*.bot-panel,
-	.bot-advance,
-	.bot-session {
-		min-width: 35%;
-		max-width: 35%;
-	}
-	.bot-code,
-	.bot-file {
-		min-width: 50%;
-		max-width: 50%;
-	}*/
 	div.bot-ui.bot-display-container {
 		min-width: 500px;
 		max-width: 35%;
