@@ -1,5 +1,3 @@
-var httpSender = new XMLHttpRequest();
-var httpReceiver = new XMLHttpRequest();
 var offset = 0;
 var chatList = [];
 
@@ -44,10 +42,11 @@ function sendFdToApi (http, action, fd, callback) {
 
 function downloadFile() {
 	getVar();
+	var http = new XMLHttpRequest();
 	fileid = document.getElementById("fileid").value;
-	botApi(httpSender, "getFile", "file_id=" + fileid, function () {
-		if(httpSender.readyState == 4 && httpSender.status == 200) {
-			res = JSON.parse(httpSender.responseText);
+	botApi(http, "getFile", "file_id=" + fileid, function () {
+		if(http.readyState == 4 && http.status == 200) {
+			res = JSON.parse(http.responseText);
 			if(res["ok"]) {
 				appendLog(res["result"]);
 				filepath = res["result"]["file_path"];
@@ -55,53 +54,56 @@ function downloadFile() {
 				urldisp.href = "https://api.telegram.org/file/bot" + token + "/" + filepath;
 				urldisp.innerHTML = filepath;
 			}
-		}
+		} else if (http.readyState == 4) httpError(http);
 	});
 }
 
 function sendFile () {
 	getVar();
+	var http = new XMLHttpRequest();
 	sendtype = document.getElementById("sendtype").value;
 	action = sendtype.substring(4).toLowerCase();
 	var fd = new FormData();
 	fd.append(action, document.getElementById("tosend").files[0]);
 	fd.append("chat_id", document.getElementById("fileto").value);
-	sendFdToApi(httpSender, sendtype, fd, function() {
-		if(httpSender.readyState == 4 && httpSender.status == 200) {
-			res = JSON.parse(httpSender.responseText);
+	sendFdToApi(http, sendtype, fd, function() {
+		if(http.readyState == 4 && http.status == 200) {
+			res = JSON.parse(http.responseText);
 			if(res["ok"]) {
 				appendLog(res["result"]);
 				addChatList(res["result"]["chat"]);
 			}
-		}
+		} else if (http.readyState == 4) httpError(http);
 	});
 }
 
 function sendCustomApi () {
 	getVar();
+	var http = new XMLHttpRequest();
 	payload   = document.getElementById("payload").value;
 	apimethod = document.getElementById("apimethod").value;
-	botApi (httpSender, apimethod, payload, function() {
-		if(httpSender.readyState == 4 && httpSender.status == 200) {
-			appendLog(JSON.parse(httpSender.responseText));
-		}
+	botApi (http, apimethod, payload, function() {
+		if(http.readyState == 4 && http.status == 200) {
+			appendLog(JSON.parse(http.responseText));
+		} else if (http.readyState == 4) httpError(http);
 	});
 }
 
 function sendMessage() {
 	getVar();
+	var http = new XMLHttpRequest();
 	if(prase == "none") prase = "";
 	para = "chat_id=" + cid + "&text=" + body + 
                "&parse_mode=" + prase + "&disable_web_page_preview=" +
                nopv + "&disable_notification=" + nopu;
-	botApi(httpSender, "sendMessage", para, function() {
-		if(httpSender.readyState == 4 && httpSender.status == 200) {
-        		res = JSON.parse(httpSender.responseText);
+	botApi(http, "sendMessage", para, function() {
+		if(http.readyState == 4 && http.status == 200) {
+        		res = JSON.parse(http.responseText);
 			if(res["ok"]) {
 				appendLog(res["result"]);
 				addChatList(res["result"]["chat"]);
 			}
-		}
+		} else if (http.readyState == 4) httpError(http);
 	});
 
 }
@@ -113,10 +115,11 @@ function startPolling () {
 
 function polling() {
 	getVar();
+	var http = new XMLHttpRequest();
 	pollPara = "offset=" + offset;
-	botApi(httpReceiver, "getUpdates", pollPara, function() {
-		if(httpReceiver.readyState == 4 && httpReceiver.status == 200) {
-			pRes = JSON.parse(httpReceiver.responseText);
+	botApi(http, "getUpdates", pollPara, function() {
+		if(http.readyState == 4 && http.status == 200) {
+			pRes = JSON.parse(http.responseText);
 			if(pRes["ok"]) {
 				pRes["result"].forEach(function(result) {
 					appendLog(result["message"])
@@ -125,7 +128,7 @@ function polling() {
 					try {
 						userCode(result["message"]);
 					} catch (error) {
-						console.error(error);
+						biu("Error: " + error, {type: "danger"});
 					}
 				});
 				offset++;
@@ -133,4 +136,8 @@ function polling() {
 		}
 	});
 
+}
+
+function httpError (http) {
+	biu("API retunred non-200 respond: " + http.status + " " + http.statusText, {type: "danger"});
 }

@@ -22,6 +22,6 @@ Array.prototype.pushArrayIfNotExist = function(element) {
 };
 
 window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
-	biu("Error: " + errorMsg, {type: "danger"})
+	biu("Error: " + errorMsg, {type: "danger"});
 	return false;
 }
