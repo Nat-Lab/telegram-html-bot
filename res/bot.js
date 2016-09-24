@@ -30,6 +30,10 @@ function botApi (http, action, param, callback) {
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	http.send(param);
 	http.onreadystatechange = callback;
+	if(action != "getUpdates") {
+		document.getElementById("lrurl").value = url;
+		document.getElementById("lrpayload").value = param;
+	}
 }
 
 function sendFdToApi (http, action, fd, callback) {
@@ -119,23 +123,26 @@ function polling() {
 	pollPara = "offset=" + offset;
 	botApi(http, "getUpdates", pollPara, function() {
 		if(http.readyState == 4 && http.status == 200) {
-			pRes = JSON.parse(http.responseText);
+			resp = http.responseText;
+			pRes = JSON.parse(resp);
 			if(pRes["ok"]) {
+				hasMessage = false;
 				pRes["result"].forEach(function(result) {
 					appendLog(result["message"])
 					offset = result["update_id"];
 					addChatList(result["message"]["chat"]);
+					hasMessage = true;
 					try {
 						userCode(result["message"]);
 					} catch (error) {
 						biu("Error: " + error, {type: "danger"});
 					}
 				});
+				if (hasMessage) respondJsonCodeMirror.setValue(resp);
 				offset++;
 			} else appendLog(pRes);
 		} else if (http.readyState == 4) httpError(http);
 	});
-
 }
 
 function httpError (http) {

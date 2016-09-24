@@ -9,19 +9,11 @@
 	width: 87%;
 }
 
-.bot-panel {
+.bot-panel, .bot-advance, .bot-debug-lastpara {
 	width: 35%;
 }
 
-.bot-code {
-	width: 50%;
-}
-
-.bot-advance {
-	width: 35%;
-}
-
-.bot-file {
+.bot-code, .bot-file, .bot-debug-lastjson {
 	width: 50%;
 }
 
@@ -39,9 +31,13 @@ textarea#code {
 	height: 120px;
 }
 
-textarea#payload {
+textarea#payload, textarea#lrpayload, textarea#text {
 	width: 95%;
 	height: 50px;
+}
+
+input#lrurl {
+	width: 90%;
 }
 
 .jh-object-key {

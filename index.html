@@ -108,6 +108,16 @@ if(message["text"] == "/start") {
 <option>sendDocument</option>
 </select> to <input type="text" name="fileto" id="fileto" placeholder="chat_id"></input> <input type="file" name="tosend" id="tosend"></input> <button onclick="sendFile();" id="sendButton">Send</button>
 </div>
+<div class="bot-ui bot-debug-lastpara">
+<b>Last request:</b><br />
+URL: <input type="text" name="lrurl" id="lrurl"></input><br />
+Payload: <br />
+<textarea name="lrpayload" id="lrpayload"></textarea><br />
+</div>
+<div class="bot-ui bot-debug-lastjson">
+<b>Last respond:</b><br />
+<textarea name="lastjson" id="lastjson"></textarea><br />
+</div>
 </body>
 <script src="res/code_ui_init.js"></script>
 </html>
