@@ -128,12 +128,17 @@ function polling() {
 			if(pRes["ok"]) {
 				hasMessage = false;
 				pRes["result"].forEach(function(result) {
-					appendLog(result["message"])
+					if(result.message || result.edited_message) message = (result.message) ? result.message : result.edited_message;
+					else {
+						appendLog(result);
+						return;
+					}
+					appendLog(message)
 					offset = result["update_id"];
-					addChatList(result["message"]["chat"]);
+					addChatList(message["chat"]);
 					hasMessage = true;
 					try {
-						userCode(result["message"]);
+						userCode(message);
 					} catch (error) {
 						biu("Error: " + error, {type: "danger"});
 					}
