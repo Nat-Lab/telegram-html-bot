@@ -1,4 +1,4 @@
-### Bot examles
+### Bot examples
 
 Here are some examples of bot. To use these exampels, choose a sample bot and import it in "Bot session" section, fill your `TOKEN`, click on "Update Code" button in "Bot code" section, and finally click on "Start Polling". 
 
